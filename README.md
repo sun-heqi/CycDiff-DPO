@@ -27,6 +27,24 @@ conda activate CycDiff_DPO
 
 > **Note:** This environment uses **Python 3.9.19**.
 
+### Data Download
+
+Download datasets and pre-trained models from Zenodo:
+
+```bash
+# Download checkpoints
+wget https://zenodo.org/records/19429073/files/ckpts.tar.gz?download=1 -O ./ckpts.tar.gz
+tar -xzf ./ckpts.tar.gz && rm ./ckpts.tar.gz
+
+# Download LNR_CPSea dataset
+wget https://zenodo.org/records/19429073/files/LNR_CPSea.tar.gz?download=1 -O ./datasets/LNR_CPSea.tar.gz
+tar -xzf ./datasets/LNR_CPSea.tar.gz -C ./datasets/ && rm ./datasets/LNR_CPSea.tar.gz
+
+# Download SciBERT model
+wget https://zenodo.org/records/19429073/files/scibert_model.tar.gz?download=1 -O ./scibert_model.tar.gz
+tar -xzf ./scibert_model.tar.gz && rm ./scibert_model.tar.gz
+```
+
 ### Pre-trained Weights
 
 The following weights are included in this repository:
