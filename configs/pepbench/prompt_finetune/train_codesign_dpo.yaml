@@ -1,0 +1,74 @@
+dataset:
+  # DPO配置
+  use_dpo: true
+  preference_pairs_path: ./datasets/train_valid/generated_pairs.pkl
+  
+  train:
+    class: PromptDataset
+    mmap_dir: ./datasets/train_valid/processed
+    specify_index: ./datasets/train_valid/processed/train_index.txt
+    backbone_only: false
+    use_covariance_matrix: true
+  valid:
+    class: PromptDataset
+    mmap_dir: ./datasets/train_valid/processed
+    specify_index: ./datasets/train_valid/processed/valid_index.txt
+    backbone_only: false
+    use_covariance_matrix: true
+
+dataloader:
+  shuffle: true
+  num_workers: 4
+  wrapper:
+    class: DynamicBatchWrapper
+    complexity: n**2
+    ubound_per_batch: 3000
+
+trainer:
+  class: LDMTrainer
+  criterion: Loss
+  config:
+    use_dpo: true                    # ← 启用DPO训练
+    dpo_beta: 0.5                     # ← DPO温度参数
+    
+    dpo_loss_weight: 1             # ← 大幅降低DPO权重 (从1.0→0.1)
+    h_recon_weight: 1              # ← 序列重建loss权重 (保持不变)
+    x_recon_weight: 1             # ← 结构重建loss权重 (保持不变)
+    
+    max_epoch: 50                    # ← 减少轮数，防止过拟合
+    save_topk: 10
+    val_freq: 1
+    save_dir: ./ckpts/LDM_codesign_DPO
+    patience: 10                      
+    metric_min_better: true
+
+    optimizer:
+      class: AdamW
+      lr: 1.0e-05                     # ← 降低学习率以提高稳定性
+      weight_decay: 0.05             # ← 增加权重衰减防止过拟合
+
+    scheduler:
+      class: ReduceLROnPlateau
+      factor: 0.6
+      patience: 3
+      mode: min
+      frequency: val_epoch
+      min_lr: 1.0e-6
+
+model:
+  class: Prompt_LDMPepDesign
+  autoencoder_ckpt: ./checkpoints/autoencoder.pth
+  autoencoder_no_randomness: true
+  hidden_size: 128
+  num_steps: 100
+  n_layers: 3
+  n_rbf: 32  # 匹配预训练checkpoint的参数
+  cutoff: 3.0
+  dist_rbf: 32
+  dist_rbf_cutoff: 7.0
+  diffusion_opt:
+    trans_seq_type: Diffusion
+    trans_pos_type: Diffusion
+
+load_ckpt: ./ckpts/dpo/epoch44_step513090.ckpt
+

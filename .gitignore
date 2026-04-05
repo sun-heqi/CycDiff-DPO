@@ -1,0 +1,21 @@
+# Processed datasets (large binary files)
+datasets/LNR_CPSea/pdbs
+datasets/train_valid/pdbs
+datasets/train_valid/processed
+datasets/LNR_CPSea/processed
+datasets/train_valid/generated_pairs.pkl
+
+# Model checkpoints
+ckpts/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# SciBERT model files
+scibert_model/
+
+# Jupyter notebooks
+*.ipynb
+*.ipynb_checkpoints/
