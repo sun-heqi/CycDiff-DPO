@@ -36,6 +36,10 @@ Download datasets and pre-trained models from Zenodo:
 wget https://zenodo.org/records/19429073/files/ckpts.tar.gz?download=1 -O ./ckpts.tar.gz
 tar -xzf ./ckpts.tar.gz && rm ./ckpts.tar.gz
 
+# Download train_valid dataset (for training DPO)
+wget https://zenodo.org/records/19429955/files/train_valid.tar.gz?download=1 -O ./datasets/train_valid.tar.gz
+tar -xzf ./datasets/train_valid.tar.gz -C ./datasets/ && rm ./datasets/train_valid.tar.gz
+
 # Download LNR_CPSea dataset
 wget https://zenodo.org/records/19429073/files/LNR_CPSea.tar.gz?download=1 -O ./datasets/LNR_CPSea.tar.gz
 tar -xzf ./datasets/LNR_CPSea.tar.gz -C ./datasets/ && rm ./datasets/LNR_CPSea.tar.gz
