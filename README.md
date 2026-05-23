@@ -83,8 +83,8 @@ bash scripts/filter_success.sh ./results/LNR_CPSea/condition2_w5_5samples/result
 ### Step 3: Postprocessing
 
 ```bash
-INPUT_DIR=./results/LNR_CPSea/condition2_w5_5samples/candidates
-OUTPUT_DIR=./results/LNR_CPSea/condition2_w5_5samples/relaxed
+export INPUT_DIR=./results/LNR_CPSea/condition2_w5_5samples/candidates
+export OUTPUT_DIR=./results/LNR_CPSea/condition2_w5_5samples/relaxed
 NUM_CORES=10 bash scripts/batch_relax_good_results.sh
 ```
 
