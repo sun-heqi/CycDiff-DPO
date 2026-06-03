@@ -136,7 +136,7 @@ bash scripts/train_xgb.sh
 
 ## Reference
 
-* [1] Jiang, D., et al. (2025). Zero-Shot Cyclic Peptide Design via Composable Geometric Constraints. Proceedings of the 42nd International Conference on Machine Learning, Proceedings of Machine Learning Research, 267, 27553–27568.. 
+* [1] Jiang, D., et al. (2025). Zero-Shot Cyclic Peptide Design via Composable Geometric Constraints. Proceedings of the 42nd International Conference on Machine Learning, Proceedings of Machine Learning Research, 267, 27553–27568.
 
 ## Citation
 ```
