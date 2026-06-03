@@ -133,3 +133,21 @@ To retrain from scratch using Caco-2 permeability data at `./datasets/caco2/caco
 ```bash
 bash scripts/train_xgb.sh
 ```
+
+## Reference
+
+* [1] Jiang, D., et al. (2025). Zero-Shot Cyclic Peptide Design via Composable Geometric Constraints. Proceedings of the 42nd International Conference on Machine Learning, Proceedings of Machine Learning Research, 267, 27553–27568.. 
+
+## Citation
+```
+@article{sun2026cycdiffdpo,
+  title   = {Design of permeability-optimized target-binding macrocycles via direct preference optimization},
+  author  = {Sun, Heqi and Tan, Hong and Chu, Yanyi and Li, Jiayi and Wang, Ruixuan and Wei, Dong-Qing},
+  journal = {Chemical Science},
+  year    = {2026},
+  volume  = {17},
+  pages   = {10223--10236},
+  doi     = {10.1039/D6SC01722C}
+}
+
+```
